@@ -1,4 +1,4 @@
-const { reverseString } = require('../src/script');
+const { reverseString } = require('../src/reverseString');
 
 // TASK 2
 // Test for reverseString function

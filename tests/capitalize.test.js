@@ -1,4 +1,4 @@
-const { capitalize } = require('../src/script');
+const { capitalize } = require('../src/capitalize');
 
 // TASK 4
 // Test for capitalize function

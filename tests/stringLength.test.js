@@ -1,4 +1,4 @@
-const { stringLength } = require('../src/script');
+const { stringLength } = require('../src/stringLength');
 
 // TASK 1
 // Test for stringLength function
