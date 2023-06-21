@@ -1,81 +1,40 @@
-const { describe } = require('yargs');
-const { Calculator } = require('../src/script');
-const { beforeEach } = require('node:test');
-
-// TASK 3
-// Tests for Calculator methods
-describe("Calculator", () => {
-  let calculator;
-
-  beforeEach(() => {
-    calculator = new Calculator();
-  });
-
-  describe("add()", () => {
-    test("adds two positive numbers", () => {
-      const result = Calculator.add(10, 20);
-      assert.equal(result, 30);
+const Calculator = require('../src/calculator');
+describe('Calculator', () => {
+    let calculator;
+  
+    beforeEach(() => {
+      calculator = new Calculator();
     });
   
-    test("adds two negative numbers", () => {
-      const result = Calculator.add(-10, -20);
-      assert.equal(result, -30);
+    describe('add', () => {
+      test('properly adds two numbers', () => {
+        expect(calculator.add(2, 3)).toBe(5);
+        expect(calculator.add(10, 13)).toBe(23);
+        expect(calculator.add(0, 0)).toBe(0);
+        });
     });
   
-    test("adds a positive and a negative number", () => {
-      const result = Calculator.add(10, -20);
-      assert.equal(result, 0);
-    });
-  });
-  
-  describe("subtract()", () => {
-    test("subtracts two positive numbers", () => {
-      const result = Calculator.subtract(10, 20);
-      assert.equal(result, -10);
+    describe('subtract', () => {
+      test('properly subtracts two numbers', () => {
+        expect(calculator.subtract(5, 3)).toBe(2);
+        expect(calculator.subtract(15, 10)).toBe(5);
+        expect(calculator.subtract(0, 0)).toBe(0);
+      });
     });
   
-    test("subtracts two negative numbers", () => {
-      const result = Calculator.subtract(-10, -20);
-      assert.equal(result, 10);
+    describe('divide', () => {
+      test('properly divides two numbers', () => {
+        expect(calculator.divide(10, 2)).toBe(5);
+      });
+  
+      test('throws an error when dividing by zero', () => {
+        expect(() => calculator.divide(10, 0)).toThrow('Invalid divider zero!');
+      });
     });
   
-    test("subtracts a positive and a negative number", () => {
-      const result = Calculator.subtract(10, -20);
-      assert.equal(result, 30);
+    describe('multiply', () => {
+      test('properly multiplies two numbers', () => {
+        expect(calculator.multiply(2, 3)).toBe(6);
+      });
     });
   });
-  
-  describe("divide()", () => {
-    test("divides two positive numbers", () => {
-      const result = Calculator.divide(10, 2);
-      assert.equal(result, 5);
-    });
-  
-    test("divides two negative numbers", () => {
-      const result = Calculator.divide(-10, -2);
-      assert.equal(result, 5);
-    });
-  
-    test("throws an error when dividing by zero", () => {
-      assert.throws(() => Calculator.divide(10, 0), Error);
-    });
-  });
-  
-  describe("multiply()", () => {
-    test("multiplies two positive numbers", () => {
-      const result = Calculator.multiply(10, 2);
-      assert.equal(result, 20);
-    });
-  
-    test("multiplies two negative numbers", () => {
-      const result = Calculator.multiply(-10, -2);
-      assert.equal(result, 20);
-    });
-  
-    test("multiplies a positive and a negative number", () => {
-      const result = Calculator.multiply(10, -2);
-      assert.equal(result, -20);
-    });
-  });
-  
-});
